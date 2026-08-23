@@ -1,0 +1,30 @@
+{
+  "name": "Udagram Microservices",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:18",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/aws-cli:1": {},
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+      "kubectl": "latest",
+      "helm": "none",
+      "minikube": "none"
+    }
+  },
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y postgresql-client && npm install -g @ionic/cli",
+  "forwardPorts": [8080, 8100, 3000],
+  "portsAttributes": {
+    "8080": { "label": "Backend API" },
+    "8100": { "label": "Ionic Frontend" },
+    "3000": { "label": "Dev Server" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "dbaeumer.vscode-eslint",
+        "angular.ng-template"
+      ]
+    }
+  }
+}
