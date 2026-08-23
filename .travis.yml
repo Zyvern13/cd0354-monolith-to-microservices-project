@@ -1,0 +1,18 @@
+language: minimal
+
+services:
+  - docker
+
+before_install:
+  - docker-compose -f docker-compose-build.yaml build --parallel
+
+script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker tag udagram-api-feed $DOCKER_USERNAME/udagram-api-feed:latest
+  - docker tag udagram-api-user $DOCKER_USERNAME/udagram-api-user:latest
+  - docker tag udagram-frontend $DOCKER_USERNAME/udagram-frontend:latest
+  - docker tag reverseproxy $DOCKER_USERNAME/reverseproxy:latest
+  - docker push $DOCKER_USERNAME/udagram-api-feed:latest
+  - docker push $DOCKER_USERNAME/udagram-api-user:latest
+  - docker push $DOCKER_USERNAME/udagram-frontend:latest
+  - docker push $DOCKER_USERNAME/reverseproxy:latest
