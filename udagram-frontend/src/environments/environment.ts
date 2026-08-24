@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   appName: 'Udagram',
-  // apiHost: 'http://localhost:8080/api/v0'
+  // apiHost: 'http://REVERSE_PROXY_EXTERNAL_IP:8080/api/v0'
   apiHost: 'https://turbo-palm-tree-r5gwpxq49rr2xwxr-8080.app.github.dev/api/v0'
 };
 
